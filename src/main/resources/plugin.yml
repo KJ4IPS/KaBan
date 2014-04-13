@@ -13,3 +13,6 @@ permissions:
     kaban.help:
         description: See the help page for KaBan
         default: op
+    kaban.test:
+        description: Debug Test command
+        default: true

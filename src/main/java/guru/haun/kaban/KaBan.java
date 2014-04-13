@@ -2,6 +2,7 @@ package guru.haun.kaban;
 
 import guru.haun.kaban.commands.KabanCmdGroup;
 import guru.haun.kaban.listener.KabanPreLoginListener;
+import guru.haun.kaban.persistance.ActiveBansDBO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +41,30 @@ public class KaBan extends JavaPlugin {
 		this.getCommand("kaban").setExecutor(new KabanCmdGroup(this));
 		this.getServer().getPluginManager().registerEvents(new KabanPreLoginListener(this), this);
 	}
+	
+	
+	public void loadBanlistFromDB(){
+		List<ActiveBansDBO> dbresults = this.getDatabase().find(ActiveBansDBO.class).findList(); // on the main thread, maybe async this later
+		banlist.clear(); //clear the old banlist, else we get dupes
+		for(ActiveBansDBO ab : dbresults){
+			banlist.add(new KaBanBanList(
+					ab.getBanned(),
+					ab.getBannedName(),
+					ab.getBannedTime(),
+					ab.getExpireTime(),
+					ab.getBanner(),
+					ab.getBannerName(),
+					ab.getReason()
+					));
+		}
+	}
+	
+	public void saveBanToDB(KaBanBanList ban){
+		ActiveBansDBO dbban = new ActiveBansDBO(ban.dbid, ban.banned, ban.bannedName, ban.bannedTime,
+				ban.expireTime, ban.banner, ban.bannerName, ban.reason);
+		this.getDatabase().save(dbban);
+	}
+	
 	
 	public void onDisable(){
 		

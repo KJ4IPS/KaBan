@@ -33,9 +33,9 @@ public class KabanPreLoginListener implements Listener {
 			if(ban.banned.equals(uuid)){
 				banmsg = ChatColor.DARK_AQUA + "You were banned by " + ChatColor.GOLD + ban.bannerName +
 						ChatColor.DARK_AQUA +"\non " + ChatColor.YELLOW +ban.bannedTime.toString() + 
-						ChatColor.DARK_AQUA +"\nuntil " + ChatColor.YELLOW +
+						ChatColor.DARK_AQUA +"\nuntil " + ChatColor.GREEN +
 						( ban.expireTime.compareTo(timeZero) == 0 ? ChatColor.RED + "the end of time" : ban.expireTime.toString() ) + 
-						ChatColor.DARK_AQUA + "\nReason:\n" + ChatColor.AQUA + ban.reason;
+						ChatColor.DARK_AQUA + "\nReason: " + ChatColor.AQUA + ban.reason;
 				if(!ban.bannedName.equalsIgnoreCase(e.getName()))
 					banmsg += "\n" + ChatColor.LIGHT_PURPLE + "Nice try changing your name, " + ban.bannedName + 
 					", or shall I say, " + e.getName();
