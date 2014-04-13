@@ -19,7 +19,7 @@ public class KabanAboutCmd implements SubCommandHandler {
 	public void handle(CmdInfo info) {
 		info.getSender().sendMessage(kaban.messenger.playerMsgSubHeader(ChatColor.AQUA + "KaBan" + ChatColor.GRAY+ 
 				" by " + ChatColor.GOLD + "KJ4IPS" + ChatColor.GRAY + " version " + ChatColor.WHITE + kaban.getKabanVersion()));
-		info.getSender().sendMessage(kaban.messenger.playerMsgSub("For help, run " + ChatColor.GREEN + "/kaban help"));
+		info.getSender().sendMessage(kaban.messenger.playerMsgSub(" - For help, run " + ChatColor.GREEN + "/kaban help"));
 	}
 
 	@Override

@@ -52,4 +52,8 @@ public class KaBanMessenger {
 			return colorTitle + pluginName + titleSeperator + colorSuccess + msg;
 		return "";
 	}
+	
+	public String playerHelp(String precmd, String cmd, String desc){
+		return colorSubdued + precmd + colorText + cmd + colorSubdued + " - " + colorTitle + desc;
+	}
 }
