@@ -38,7 +38,7 @@ public class KabanPreLoginListener implements Listener {
 				banmsg = "You were banned by " + ban.bannerName + "\non " + ban.bannedTime.toString() + "\nuntil " +
 						( ban.expireTime.compareTo(timeZero) == 0 ? "the end of time" : ban.expireTime.toString() ) + 
 						"\nReason:\n" + ban.reason;
-				if(ban.bannedName != e.getName())
+				if(!ban.bannedName.equalsIgnoreCase(e.getName()))
 					banmsg += "\n" + ChatColor.LIGHT_PURPLE + "Nice try changing your name, " + ban.bannedName;
 				e.setKickMessage(banmsg);
 				e.setLoginResult(Result.KICK_BANNED);
