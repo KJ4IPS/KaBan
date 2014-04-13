@@ -1,5 +1,5 @@
 name: KaBan
-main: guru.haun.kaBan.KaBan
+main: guru.haun.kaban.KaBan
 version: 0.0.0
 commands:
     kaban:
