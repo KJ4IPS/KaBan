@@ -35,6 +35,7 @@ public class KaBan extends JavaPlugin {
 		testentry.expireTime = new Date();
 		testentry.expireTime.setTime(0);
 		testentry.reason = "We do what we must because we can";
+		banlist.add(testentry);
 		
 		this.getCommand("kaban").setExecutor(new KabanCmdGroup(this));
 		this.getServer().getPluginManager().registerEvents(new KabanPreLoginListener(this), this);

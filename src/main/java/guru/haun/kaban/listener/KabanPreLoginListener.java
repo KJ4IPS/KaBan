@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.UUID;
+import java.util.logging.Level;
 
 import guru.haun.kaban.KaBan;
 import guru.haun.kaban.KaBanBanList;
