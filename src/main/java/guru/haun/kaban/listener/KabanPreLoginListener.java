@@ -33,7 +33,7 @@ public class KabanPreLoginListener implements Listener {
 		kaban.getServer().getLogger().log(Level.INFO, "Checking for bans on " +uuid);
 		for(KaBanBanList ban : kaban.banlist){
 			kaban.getServer().getLogger().log(Level.INFO,"Ban found for: " + ban.banned);
-			if(ban.banned == uuid){
+			if(ban.banned.equals(uuid)){
 				kaban.getServer().getLogger().log(Level.INFO, "Found a ban for " +uuid);
 				banmsg = "You were banned by " + ban.bannerName + " on " + ban.bannedTime.toString() + " until " +
 						( ban.expireTime.compareTo(timeZero) == 0 ? "the end of time" : ban.expireTime.toString() ) + 
