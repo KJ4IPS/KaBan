@@ -1,6 +1,7 @@
 name: KaBan
 main: guru.haun.kaban.KaBan
 version: 0.0.0
+database: true
 commands:
     kaban:
         description: The base command for KaBan
