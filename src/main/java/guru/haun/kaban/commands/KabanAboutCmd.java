@@ -16,6 +16,7 @@ public class KabanAboutCmd implements SubCommandHandler {
 	
 	public void handle(CmdInfo info) {
 		info.getSender().sendMessage("This is KaBan by KJ4IPS v" + kaban.getKabanVersion());
+		info.getSender().sendMessage("For help, run /kaban help");;
 	}
 
 	@Override
