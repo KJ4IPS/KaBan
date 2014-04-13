@@ -83,6 +83,15 @@ public class ActiveBansDBO {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
+	
+	public void setId(long id){
+		this.id = id;
+	}
+	
+	public long getId() {
+		return this.id;
+	}
+	
 
 	@Id
 	private long id;
