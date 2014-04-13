@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
+import javax.persistence.PersistenceException;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class KaBan extends JavaPlugin {
@@ -38,8 +40,20 @@ public class KaBan extends JavaPlugin {
 		testentry.reason = "We do what we must because we can";
 		banlist.add(testentry);
 		
+		try {
+			getDatabase().find(ActiveBansDBO.class).findRowCount();
+		}catch(PersistenceException ex) {
+			installDDL();
+		}
+		
 		this.getCommand("kaban").setExecutor(new KabanCmdGroup(this));
 		this.getServer().getPluginManager().registerEvents(new KabanPreLoginListener(this), this);
+	}
+	
+	public List<Class<?>> getDatabaseClasses() {
+		List<Class<?>> list = new ArrayList<Class<?>>();
+		list.add(ActiveBansDBO.class);
+		return list;
 	}
 	
 	
