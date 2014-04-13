@@ -15,6 +15,8 @@ public class KabanCmdGroup extends Executor {
 		
 		// /kaban about
 		addSub( new String[] {"about", "defaulthandler"}, "kaban.about").allowNonPlayer().setHandler(new KabanAboutCmd(kaban));
+		addSub( new String[] {"help", "h", "wtf", "?"}, "kaban.help").allowNonPlayer().setHandler(new KabanHelpCmd(kaban));
+		
 	}
 	
 }

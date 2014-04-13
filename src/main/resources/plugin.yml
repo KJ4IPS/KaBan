@@ -10,3 +10,6 @@ permissions:
     kaban.about:
         description: See the about message for KaBan
         default: op
+    kaban.help
+        description: See the help page for KaBan
+        default: op
