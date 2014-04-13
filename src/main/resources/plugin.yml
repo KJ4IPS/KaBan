@@ -1,5 +1,5 @@
 name: KaBan
-main: guru.haun.kaBan.KaBanPlugin
+main: guru.haun.kaBan.KaBan
 version: 0.0.0
 commands:
     kaban:
