@@ -30,8 +30,10 @@ public class KabanPreLoginListener implements Listener {
 	public void onPlayerPreLogin(AsyncPlayerPreLoginEvent e){
 		UUID uuid = e.getUniqueId();
 		String banmsg;
+		kaban.getServer().getLogger().log(Level.INFO, "Checking for bans on " +uuid);
 		for(KaBanBanList ban : kaban.banlist){
 			if(ban.banned == uuid&&!ban.hasExpired()){
+				kaban.getServer().getLogger().log(Level.INFO, "Found a ban for " +uuid);
 				banmsg = "You were banned by " + ban.bannerName + " on " + ban.bannedTime.toString() + " until " +
 						( ban.expireTime.compareTo(timeZero) == 0 ? "the end of time" : ban.expireTime.toString() ) + 
 						"for the following reason: " + ban.reason;
