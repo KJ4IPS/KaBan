@@ -5,7 +5,3 @@ commands:
     kaban:
         description: The base command for KaBan
         usage: /<command> help
-        aliases: [k,kb,kab,kban]
- permissions:
-     kaban.help:
-         default: op
