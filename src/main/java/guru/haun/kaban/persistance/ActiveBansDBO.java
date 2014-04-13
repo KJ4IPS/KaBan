@@ -94,10 +94,10 @@ public class ActiveBansDBO {
 	@NotEmpty
 	private String bannedName;
 	
-	@NotEmpty
+	@NotNull
 	private Date bannedTime;
 	
-	@NotEmpty
+	@NotNull
 	private Date expireTime;
 	
 	@Basic
