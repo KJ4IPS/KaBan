@@ -54,6 +54,6 @@ public class KaBanMessenger {
 	}
 	
 	public String playerHelp(String precmd, String cmd, String desc){
-		return colorSubdued + precmd + colorText + cmd + colorSubdued + " - " + colorTitle + desc;
+		return colorSubdued + precmd + " " + colorText + cmd + colorSubdued + " - " + colorTitle + desc;
 	}
 }
