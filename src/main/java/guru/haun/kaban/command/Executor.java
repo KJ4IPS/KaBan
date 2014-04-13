@@ -85,7 +85,7 @@ public class Executor implements CommandExecutor, TabCompleter {
 			subCmd = subCmds.get(defaultSubCommand); //try the default
 			if(subCmd == null){ //if we still have none, a command got passed to the plugin that should not have been...
 				sender.sendMessage(ChatColor.RED + "Unreconginzed Comand");
-				plugin.getLogger().log(Level.WARNING,"Somthing tried to execute the command \"" + commandLabel + "\"(" + cmdName + "), this command is unknown to KaBan");
+				plugin.getLogger().log(Level.WARNING,"Somthing tried to execute the command \"" + cmdName + "\"(" + commandLabel + "), this command is unknown to KaBan");
 				return true; //dont let bukkit whine about it too
 			} else { //use the default command
 				//for this case, we need to leave subcommand mode
@@ -103,7 +103,7 @@ public class Executor implements CommandExecutor, TabCompleter {
 			}
 		} else {
 			if(!subCmd.mayPlayer(player)){
-				sender.sendMessage(ChatColor.RED + "Sorry, you lack the permissions required to use '"+ commandLabel + "'(" + cmdName + ").") ;
+				sender.sendMessage(ChatColor.RED + "Sorry, you lack the permissions required to use '"+ cmdName + "'(" + commandLabel + ").") ;
 				return true;
 			}
 		}

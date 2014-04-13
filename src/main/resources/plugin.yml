@@ -5,3 +5,7 @@ commands:
     kaban:
         description: The base command for KaBan
         usage: /<command> help
+permissions:
+    kaban.about:
+        description: See the about message for KaBan
+        default: true
