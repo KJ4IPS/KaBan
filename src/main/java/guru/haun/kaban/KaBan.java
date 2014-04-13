@@ -25,8 +25,8 @@ public class KaBan extends JavaPlugin {
 		this.getLogger().log(Level.WARNING, "This is a development version of KaBan, USE AT YOUR OWN RISK!");
 		
 		KaBanBanList testentry = new KaBanBanList();
-		testentry.banned = UUID.fromString("65e697b0e1104f27911fa64b1eb47463");
-		testentry.banner = UUID.fromString("718cf67190844e78b91f033e80aa11bf");
+		testentry.banned = UUID.fromString("65e697b0-e110-4f27-911f-a64b1eb47463");
+		testentry.banner = UUID.fromString("718cf671-9084-4e78-b91f-033e80aa11bf");
 		testentry.bannedName = "DrkBahamut";
 		testentry.bannerName = "KJ4IPS";
 		testentry.bannedTime.setTime(5);
