@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.UUID;
-import java.util.logging.Level;
 
 import guru.haun.kaban.KaBan;
 import guru.haun.kaban.KaBanBanList;
@@ -30,14 +29,13 @@ public class KabanPreLoginListener implements Listener {
 	public void onPlayerPreLogin(AsyncPlayerPreLoginEvent e){
 		UUID uuid = e.getUniqueId();
 		String banmsg;
-		kaban.getServer().getLogger().log(Level.INFO, "Checking for bans on " +uuid);
 		for(KaBanBanList ban : kaban.banlist){
-			kaban.getServer().getLogger().log(Level.INFO,"Ban found for: " + ban.banned);
 			if(ban.banned.equals(uuid)){
-				kaban.getServer().getLogger().log(Level.INFO, "Found a ban for " +uuid);
-				banmsg = "You were banned by " + ban.bannerName + "\non " + ban.bannedTime.toString() + "\nuntil " +
-						( ban.expireTime.compareTo(timeZero) == 0 ? "the end of time" : ban.expireTime.toString() ) + 
-						"\nReason:\n" + ban.reason;
+				banmsg = ChatColor.DARK_AQUA + "You were banned by " + ChatColor.GOLD + ban.bannerName +
+						ChatColor.DARK_AQUA +"\non " + ChatColor.YELLOW +ban.bannedTime.toString() + 
+						ChatColor.DARK_AQUA +"\nuntil " + ChatColor.YELLOW +
+						( ban.expireTime.compareTo(timeZero) == 0 ? ChatColor.RED + "the end of time" : ban.expireTime.toString() ) + 
+						ChatColor.DARK_AQUA + "\nReason:\n" + ChatColor.AQUA + ban.reason;
 				if(!ban.bannedName.equalsIgnoreCase(e.getName()))
 					banmsg += "\n" + ChatColor.LIGHT_PURPLE + "Nice try changing your name, " + ban.bannedName + 
 					", or shall I say, " + e.getName();
