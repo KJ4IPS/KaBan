@@ -103,7 +103,7 @@ public class Executor implements CommandExecutor, TabCompleter {
 			}
 		} else {
 			if(!subCmd.mayPlayer(player)){
-				sender.sendMessage(ChatColor.RED + "Sorry, you lack the permissions required to use '"+ cmdName + "'(" + commandLabel + ").") ;
+				sender.sendMessage(ChatColor.RED + "Sorry, you lack the permissions required to use this command") ;
 				return true;
 			}
 		}

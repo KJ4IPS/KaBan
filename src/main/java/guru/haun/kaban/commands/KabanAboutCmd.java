@@ -2,6 +2,8 @@ package guru.haun.kaban.commands;
 
 import java.util.List;
 
+import org.bukkit.ChatColor;
+
 import guru.haun.kaban.KaBan;
 import guru.haun.kaban.command.CmdInfo;
 import guru.haun.kaban.command.SubCommandHandler;
@@ -15,8 +17,9 @@ public class KabanAboutCmd implements SubCommandHandler {
 	}
 	
 	public void handle(CmdInfo info) {
-		info.getSender().sendMessage("This is KaBan by KJ4IPS v" + kaban.getKabanVersion());
-		info.getSender().sendMessage("For help, run /kaban help");;
+		info.getSender().sendMessage(kaban.messenger.playerMsgSubHeader(ChatColor.AQUA + "KaBan" + ChatColor.GRAY+ 
+				" by " + ChatColor.GOLD + "KJ4IPS" + ChatColor.GRAY + " version " + ChatColor.WHITE + kaban.getKabanVersion()));
+		info.getSender().sendMessage(kaban.messenger.playerMsgSub("For help, run " + ChatColor.GREEN + "/kaban help"));
 	}
 
 	@Override

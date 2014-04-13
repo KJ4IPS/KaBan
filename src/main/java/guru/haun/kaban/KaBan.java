@@ -8,9 +8,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class KaBan extends JavaPlugin {
 	private static String kabanVersion;
-	
+	public KaBanMessenger messenger;
 	@Override
 	public void onEnable(){
+		messenger = new KaBanMessenger("KaBan");
 		kabanVersion = this.getDescription().getVersion();
 		this.getLogger().log(Level.WARNING, "This is a development version of KaBan, USE AT YOUR OWN RISK!");
 		this.getCommand("kaban").setExecutor(new KabanCmdGroup(this));
