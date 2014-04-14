@@ -2,6 +2,7 @@ package guru.haun.kaban;
 
 import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import org.bukkit.ChatColor;
 
@@ -69,12 +70,47 @@ public class KaBanMessenger {
 				ChatColor.DARK_AQUA +"\nuntil " + ChatColor.GREEN +
 				( ban.getExpireTime().compareTo(tempCal.getTime()) == 0 ? ChatColor.RED + "the end of time" : ban.getExpireTime().toString() ) + 
 				ChatColor.DARK_AQUA + "\nReason: " + ChatColor.AQUA + ban.getReason();
-		;
-				message += ChatColor.RED + "time interval" + " remaining";
+		if(!ban.isPerma())
+				message += ChatColor.RED + durationString(banTimeRemain(ban)) + " remaining";
 		return message;
 	}
 	public String playerKickMessage(String kicker, String reason){
 		return ChatColor.DARK_AQUA + "You were kicked by " + ChatColor.GOLD + kicker +
 				ChatColor.DARK_AQUA + "\nReason: " + reason;
+	}
+	
+	public long banTimeRemain(KaBanBanEntry ban) {
+		if(ban.isPerma())
+			return -1;
+		return ban.getBannedTime().getTime() - Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime().getTime();
+	}
+	
+	public String durationString(long ms){
+		//sometime do better stings here
+		long seconds;
+		long minutes;
+		long hours;
+		long days;
+		long weeks;
+		long years;
+		
+		seconds = ms/1000l;
+		ms = ms % 1000;
+		minutes = seconds/60l;
+		seconds = seconds % 60;
+		hours = minutes/60l;
+		minutes = minutes % 60;
+		days = hours/24l;
+		hours = hours % 24;
+		weeks = days/7l;
+		weeks = weeks % 7;
+		years = weeks/52l;
+		weeks = weeks % 25;
+		return  (years>0?(String.valueOf(years) + "Y "):"") +
+				(weeks>0?(String.valueOf(weeks) + "M "):"") +
+				(days>0?(String.valueOf(days) + "D "):"") +
+				(hours>0?(String.valueOf(hours) + "h "):"") +
+				(minutes>0?(String.valueOf(minutes) + "m "):"") +
+				(seconds>0?(String.valueOf(seconds) + "s "):"");
 	}
 }
