@@ -62,7 +62,7 @@ public class KaBanBanEntry {
 	}
 	
 	public KaBanBanEntry(){
-		;
+		this.id = 0;
 	}
 	
 	public boolean hasExpired(){
