@@ -48,9 +48,9 @@ public class KabanBanCmd implements SubCommandHandler {
 			ban.setBannedName(player.getName());
 		}
 		
-		String reason = "";
-		for(Integer i=3; i < args.length;i++){
-			reason += args[i];
+		String reason = args[3];
+		for(Integer i=4; i < args.length;i++){
+			reason += " " + args[i];
 		}
 		ban.setReason(reason);
 		kaban.addBan(ban);
