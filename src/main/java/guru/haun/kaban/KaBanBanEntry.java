@@ -5,15 +5,44 @@ import java.util.Date;
 import java.util.TimeZone;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.avaje.ebean.validation.Length;
+import com.avaje.ebean.validation.NotEmpty;
+import com.avaje.ebean.validation.NotNull;
+
+@Entity
+@Table(name="ActiveBans")
 public class KaBanBanEntry {
+	
+	@Id
+	private long id;
+	
+	@NotNull
+	@Length(max=17)
 	private UUID banned;
+	
+	@NotEmpty
 	private String bannedName;
-	private UUID banner;
-	private String bannerName;
-	private String reason;
+	
+	@NotNull
 	private Date bannedTime;
-	private  Date expireTime;
-	private long dbid;
+	
+	@NotNull
+	private Date expireTime;
+	
+	@Length(max=17)
+	private UUID banner;
+	
+	@NotEmpty
+	private String bannerName;
+	
+	@NotEmpty
+	@Length(max=255)
+	private String reason;
+
 	
 	public KaBanBanEntry(UUID banned, String bannedName, Date bannedTime, Date expireTime, UUID banner, String bannerName, String reason){
 		this.banned = banned;
@@ -23,11 +52,11 @@ public class KaBanBanEntry {
 		this.banner = banner;
 		this.bannerName = bannerName;
 		this.reason = reason;
-		this.dbid = 0;
+		this.id = 0;
 	}
 	public KaBanBanEntry(long dbid, UUID banned, String bannedName, Date bannedTime, Date expireTime, UUID banner, String bannerName, String reason){
 		this(banned,bannedName,bannedTime,expireTime,banner,bannerName,reason);
-		this.dbid = dbid;
+		this.id = dbid;
 	}
 	
 	public boolean hasExpired(){
@@ -75,10 +104,10 @@ public class KaBanBanEntry {
 	public void setExpireTime(Date expireTime) {
 		this.expireTime = expireTime;
 	}
-	public long getDbid() {
-		return dbid;
+	public long getId() {
+		return id;
 	}
-	public void setDbid(long dbid) {
-		this.dbid = dbid;
+	public void setId(long id) {
+		this.id = id;
 	}
 }
