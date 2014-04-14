@@ -32,6 +32,7 @@ public class KaBan extends JavaPlugin {
 		
 		this.getCommand("kaban").setExecutor(new KabanCmdGroup(this));
 		this.getServer().getPluginManager().registerEvents(new KabanPreLoginListener(this), this);
+		loadBanlistFromDB();
 	}
 	
 	public List<Class<?>> getDatabaseClasses() {
