@@ -36,7 +36,7 @@ public class KaBan extends JavaPlugin {
 	
 	public List<Class<?>> getDatabaseClasses() {
 		List<Class<?>> list = new ArrayList<Class<?>>();
-		//list.add(ActiveBansDBO.class);
+		list.add(KaBanBanEntry.class);
 		return list;
 	}
 	
