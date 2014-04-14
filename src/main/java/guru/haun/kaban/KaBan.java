@@ -4,6 +4,7 @@ import guru.haun.kaban.commands.KabanCmdGroup;
 import guru.haun.kaban.listener.KabanPreLoginListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -38,6 +39,14 @@ public class KaBan extends JavaPlugin {
 	public void removeBan(KaBanBanEntry ban){
 		banlist.remove(ban);
 		this.getDatabase().delete(ban);
+	}
+	
+	public void addBan(KaBanBanEntry ban) {
+		banlist.add(ban);
+		this.getDatabase().save(ban);
+		if(this.getServer().getPlayer(ban.getBanned()) != null){
+			this.getServer().getPlayer(ban.getBanned()).kickPlayer(this.messenger.playerKickBanMessage(ban));
+		}
 	}
 	
 	public List<Class<?>> getDatabaseClasses() {
