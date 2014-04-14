@@ -35,6 +35,11 @@ public class KaBan extends JavaPlugin {
 		loadBanlistFromDB();
 	}
 	
+	public void removeBan(KaBanBanEntry ban){
+		banlist.remove(ban);
+		this.getDatabase().delete(ban);
+	}
+	
 	public List<Class<?>> getDatabaseClasses() {
 		List<Class<?>> list = new ArrayList<Class<?>>();
 		list.add(KaBanBanEntry.class);
