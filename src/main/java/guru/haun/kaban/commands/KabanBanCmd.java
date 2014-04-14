@@ -34,7 +34,7 @@ public class KabanBanCmd implements SubCommandHandler {
 		if(Integer.parseInt(args[2]) == 0)
 			cal.setTimeInMillis(0);
 		else
-			cal.add(DateFormat.SECOND_FIELD, Integer.parseInt(args[2]));
+			cal.add(Calendar.SECOND, Integer.parseInt(args[2]));
 		ban.setExpireTime(cal.getTime());
 		//Now, for the UUID
 			//Is the player online
@@ -52,6 +52,7 @@ public class KabanBanCmd implements SubCommandHandler {
 		for(Integer i=3; i < args.length;i++){
 			reason += args[i];
 		}
+		ban.setReason(reason);
 		kaban.addBan(ban);
 	}
 
