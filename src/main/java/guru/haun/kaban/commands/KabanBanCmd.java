@@ -24,27 +24,33 @@ public class KabanBanCmd implements SubCommandHandler {
 
 	@Override
 	public void handle(CmdInfo info) {
+		String[] args = info.getArgs();
 		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 		KaBanBanEntry ban = new KaBanBanEntry();
 		ban.setBanner(info.getPlayer().getUniqueId());
 		ban.setBannerName(info.getPlayer().getName());
 		ban.setBannedTime(cal.getTime());
 		//TODO: better time handling
-		if(Integer.parseInt(info.getArg(2)) == 0)
+		if(Integer.parseInt(args[2]) == 0)
 			cal.setTimeInMillis(0);
 		else
-			cal.add(DateFormat.SECOND_FIELD, Integer.parseInt(info.getArg(2)));
+			cal.add(DateFormat.SECOND_FIELD, Integer.parseInt(args[2]));
 		ban.setExpireTime(cal.getTime());
 		//Now, for the UUID
 			//Is the player online
 		if(kaban.getServer().getPlayer(info.getArg(1)) != null){
-			Player player = kaban.getServer().getPlayer(info.getArg(1));
+			Player player = kaban.getServer().getPlayer(args[1]);
 			ban.setBanned(player.getUniqueId());
 			ban.setBannedName(player.getName());
 		}else{ //player is not online, have to go Name -> UUID
-			OfflinePlayer player = kaban.getServer().getOfflinePlayer(info.getArg(1));
+			OfflinePlayer player = kaban.getServer().getOfflinePlayer(args[1]);
 			ban.setBanned(player.getUniqueId());
 			ban.setBannedName(player.getName());
+		}
+		
+		String reason = "";
+		for(Integer i=3; i < args.length;i++){
+			reason += args[i];
 		}
 		kaban.addBan(ban);
 	}
