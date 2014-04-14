@@ -6,7 +6,7 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import guru.haun.kaban.KaBan;
-import guru.haun.kaban.KaBanBanList;
+import guru.haun.kaban.KaBanBanEntry;
 import guru.haun.kaban.command.CmdInfo;
 import guru.haun.kaban.command.Executor;
 import guru.haun.kaban.command.SubCommandHandler;
@@ -32,7 +32,7 @@ public class KabanCmdGroup extends Executor {
 			public void handle(CmdInfo info) {
 				Calendar expireTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 				expireTime.add(Calendar.SECOND, Integer.parseInt(info.getArg(3)));
-				kaban.saveBanToDB(new KaBanBanList(
+				kaban.saveBanToDB(new KaBanBanEntry(
 						UUID.fromString(info.getArg(1)),
 						info.getArg(2),
 						Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime(),

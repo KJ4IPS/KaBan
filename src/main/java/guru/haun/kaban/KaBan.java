@@ -2,12 +2,9 @@ package guru.haun.kaban;
 
 import guru.haun.kaban.commands.KabanCmdGroup;
 import guru.haun.kaban.listener.KabanPreLoginListener;
-import guru.haun.kaban.persistance.ActiveBansDBO;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 
 import javax.persistence.PersistenceException;
@@ -19,7 +16,7 @@ public class KaBan extends JavaPlugin {
 	public KaBanMessenger messenger;
 	
 	
-	public List<KaBanBanList> banlist = new ArrayList<KaBanBanList>();
+	public List<KaBanBanEntry> banlist = new ArrayList<KaBanBanEntry>();
 	
 	
 	@Override
@@ -27,21 +24,8 @@ public class KaBan extends JavaPlugin {
 		messenger = new KaBanMessenger("KaBan");
 		kabanVersion = this.getDescription().getVersion();
 		this.getLogger().log(Level.WARNING, "This is a development version of KaBan, USE AT YOUR OWN RISK!");
-		
-		KaBanBanList testentry = new KaBanBanList();
-		testentry.banned = UUID.fromString("65e697b0-e110-4f27-911f-a64b1eb47463");
-		testentry.banner = UUID.fromString("718cf671-9084-4e78-b91f-033e80aa11bf");
-		testentry.bannedName = "NotBahamut";
-		testentry.bannerName = "KJ4IPS";
-		testentry.bannedTime = new Date();
-		testentry.bannedTime.setTime(5);
-		testentry.expireTime = new Date();
-		testentry.expireTime.setTime(0);
-		testentry.reason = "We do what we must because we can";
-		banlist.add(testentry);
-		
 		try {
-			getDatabase().find(ActiveBansDBO.class).findRowCount();
+		//	getDatabase().find(ActiveBansDBO.class).findRowCount();
 		}catch(PersistenceException ex) {
 			installDDL();
 		}
@@ -52,13 +36,13 @@ public class KaBan extends JavaPlugin {
 	
 	public List<Class<?>> getDatabaseClasses() {
 		List<Class<?>> list = new ArrayList<Class<?>>();
-		list.add(ActiveBansDBO.class);
+		//list.add(ActiveBansDBO.class);
 		return list;
 	}
 	
 	
 	public void loadBanlistFromDB(){
-		List<ActiveBansDBO> dbresults = this.getDatabase().find(ActiveBansDBO.class).findList(); // on the main thread, maybe async this later
+		/*List<ActiveBansDBO> dbresults = this.getDatabase().find(ActiveBansDBO.class).findList(); // on the main thread, maybe async this later
 		banlist.clear(); //clear the old banlist, else we get dupes
 		for(ActiveBansDBO ab : dbresults){
 			banlist.add(new KaBanBanList(
@@ -70,13 +54,13 @@ public class KaBan extends JavaPlugin {
 					ab.getBannerName(),
 					ab.getReason()
 					));
-		}
+		}*/
 	}
 	
-	public void saveBanToDB(KaBanBanList ban){
-		ActiveBansDBO dbban = new ActiveBansDBO(ban.dbid, ban.banned, ban.bannedName, ban.bannedTime,
-				ban.expireTime, ban.banner, ban.bannerName, ban.reason);
-		this.getDatabase().save(dbban);
+	public void saveBanToDB(KaBanBanEntry ban){
+		//ActiveBansDBO dbban = new ActiveBansDBO(ban.dbid, ban.banned, ban.bannedName, ban.bannedTime,
+		//		ban.expireTime, ban.banner, ban.bannerName, ban.reason);
+		//this.getDatabase().save(dbban);
 	}
 	
 	
