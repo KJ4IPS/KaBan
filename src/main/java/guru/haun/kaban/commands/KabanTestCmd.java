@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 
-public class KabanTestCommand implements SubCommandHandler {
+public class KabanTestCmd implements SubCommandHandler {
 
 	private KaBan kaban;
-	public KabanTestCommand(KaBan kaban){
+	public KabanTestCmd(KaBan kaban){
 		this.kaban = kaban;
 	}
 	

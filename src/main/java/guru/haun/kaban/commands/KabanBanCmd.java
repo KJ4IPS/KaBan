@@ -13,12 +13,12 @@ import guru.haun.kaban.KaBanBanEntry;
 import guru.haun.kaban.command.CmdInfo;
 import guru.haun.kaban.command.SubCommandHandler;
 
-public class KabanBanCommand implements SubCommandHandler {
+public class KabanBanCmd implements SubCommandHandler {
 
 	
 	private final KaBan kaban;
 	
-	public KabanBanCommand(KaBan kaban){
+	public KabanBanCmd(KaBan kaban){
 		this.kaban = kaban;
 	}
 
