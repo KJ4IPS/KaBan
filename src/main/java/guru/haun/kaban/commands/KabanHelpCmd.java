@@ -14,7 +14,8 @@ public class KabanHelpCmd implements SubCommandHandler {
 	
 	private static String[][] helplist = new String[][] {
 		{" /kaban", "about", "Show information about KaBan"},
-		{" /kaban", "help", "Show this screen"}
+		{" /kaban", "help", "Show this screen"},
+		{" /kaban", "ban <who> <time> <why>", "Bans a player"}
 	};
 	
 	public KabanHelpCmd(KaBan kaban){
