@@ -42,25 +42,9 @@ public class KaBan extends JavaPlugin {
 	
 	
 	public void loadBanlistFromDB(){
-		/*List<ActiveBansDBO> dbresults = this.getDatabase().find(ActiveBansDBO.class).findList(); // on the main thread, maybe async this later
+		List<KaBanBanEntry> dbresults = this.getDatabase().find(KaBanBanEntry.class).findList(); // on the main thread, maybe async this later
 		banlist.clear(); //clear the old banlist, else we get dupes
-		for(ActiveBansDBO ab : dbresults){
-			banlist.add(new KaBanBanList(
-					ab.getBanned(),
-					ab.getBannedName(),
-					ab.getBannedTime(),
-					ab.getExpireTime(),
-					ab.getBanner(),
-					ab.getBannerName(),
-					ab.getReason()
-					));
-		}*/
-	}
-	
-	public void saveBanToDB(KaBanBanEntry ban){
-		//ActiveBansDBO dbban = new ActiveBansDBO(ban.dbid, ban.banned, ban.bannedName, ban.bannedTime,
-		//		ban.expireTime, ban.banner, ban.bannerName, ban.reason);
-		//this.getDatabase().save(dbban);
+		banlist.addAll(dbresults);
 	}
 	
 	
