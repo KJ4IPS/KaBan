@@ -19,7 +19,7 @@ import com.avaje.ebean.validation.NotNull;
 @Table(name="ActiveBans")
 public class KaBanBanEntry {
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private long id;
 	
 	@NotNull
