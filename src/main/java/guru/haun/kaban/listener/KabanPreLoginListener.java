@@ -30,7 +30,7 @@ public class KabanPreLoginListener implements Listener {
 		UUID uuid = e.getUniqueId();
 		String banmsg;
 		for(KaBanBanEntry ban : kaban.banlist){
-			if(ban.getBanned().equals(uuid)){
+			if(ban.getBanned().equals(uuid)&&!ban.hasExpired()){
 				e.setLoginResult(Result.KICK_BANNED);
 				banmsg = ChatColor.DARK_AQUA + "You were banned by " + ChatColor.GOLD + ban.getBannerName() +
 						ChatColor.DARK_AQUA +"\non " + ChatColor.YELLOW +ban.getBannedTime().toString() + 
