@@ -59,6 +59,10 @@ public class KaBanBanEntry {
 		this.id = dbid;
 	}
 	
+	public KaBanBanEntry(){
+		;
+	}
+	
 	public boolean hasExpired(){
 		return this.expireTime.compareTo(Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime()) >= 0;
 	}
