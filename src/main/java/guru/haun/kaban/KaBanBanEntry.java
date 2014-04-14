@@ -66,7 +66,7 @@ public class KaBanBanEntry {
 	}
 	
 	public boolean hasExpired(){
-		return this.expireTime.compareTo(Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime()) >= 0;
+		return this.expireTime.compareTo(Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime()) <= 0;
 	}
 	public UUID getBanned() {
 		return banned;
