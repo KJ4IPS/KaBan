@@ -21,7 +21,7 @@ public class KabanTestCommand implements SubCommandHandler {
 	public void handle(CmdInfo info) {
 		Calendar expireTime = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 		expireTime.add(Calendar.SECOND, Integer.parseInt(info.getArg(3)));
-		kaban.getDatabase().save(new KaBanBanEntry(
+		KaBanBanEntry ban = new KaBanBanEntry(
 				UUID.fromString(info.getArg(1)),
 				info.getArg(2),
 				Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime(),
@@ -29,7 +29,9 @@ public class KabanTestCommand implements SubCommandHandler {
 				info.getPlayer().getUniqueId(),
 				info.getPlayer().getName(),
 				info.getArg(4)
-				));
+				);
+		kaban.banlist.add(ban);
+		kaban.getDatabase().save(ban);
 		
 	}
 		@Override

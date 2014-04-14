@@ -25,7 +25,7 @@ public class KaBan extends JavaPlugin {
 		kabanVersion = this.getDescription().getVersion();
 		this.getLogger().log(Level.WARNING, "This is a development version of KaBan, USE AT YOUR OWN RISK!");
 		try {
-		//	getDatabase().find(ActiveBansDBO.class).findRowCount();
+			getDatabase().find(KaBanBanEntry.class).findRowCount();
 		}catch(PersistenceException ex) {
 			installDDL();
 		}
