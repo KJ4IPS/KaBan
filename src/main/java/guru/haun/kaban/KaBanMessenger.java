@@ -63,11 +63,15 @@ public class KaBanMessenger {
 	public String playerKickBanMessage(KaBanBanEntry ban){
 		Calendar tempCal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 		tempCal.setTimeInMillis(0);
-		return ChatColor.DARK_AQUA + "You were banned by " + ChatColor.GOLD + ban.getBannerName() +
+		String message;
+		message =  ChatColor.DARK_AQUA + "You were banned by " + ChatColor.GOLD + ban.getBannerName() +
 				ChatColor.DARK_AQUA +"\non " + ChatColor.YELLOW +ban.getBannedTime().toString() + 
 				ChatColor.DARK_AQUA +"\nuntil " + ChatColor.GREEN +
 				( ban.getExpireTime().compareTo(tempCal.getTime()) == 0 ? ChatColor.RED + "the end of time" : ban.getExpireTime().toString() ) + 
 				ChatColor.DARK_AQUA + "\nReason: " + ChatColor.AQUA + ban.getReason();
+		;
+				message += ChatColor.RED + "time interval" + " remaining";
+		return message;
 	}
 	public String playerKickMessage(String kicker, String reason){
 		return ChatColor.DARK_AQUA + "You were kicked by " + ChatColor.GOLD + kicker +

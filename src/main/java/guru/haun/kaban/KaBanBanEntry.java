@@ -65,9 +65,18 @@ public class KaBanBanEntry {
 		this.id = 0;
 	}
 	
-	public boolean hasExpired(){
+	public boolean hasExpired() {
+		if(this.isPerma())
+			return false;
 		return this.expireTime.compareTo(Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTime()) <= 0;
 	}
+	
+	public boolean isPerma() {
+		Calendar timeZero = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		timeZero.setTimeInMillis(0);
+		return this.expireTime.equals(timeZero.getTime());
+	}
+	
 	public UUID getBanned() {
 		return banned;
 	}
