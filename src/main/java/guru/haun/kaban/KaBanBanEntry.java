@@ -21,10 +21,10 @@ public class KaBanBanEntry {
 	private long id;
 	
 	@NotNull
-	@Length(max=17)
 	private UUID banned;
 	
 	@NotEmpty
+	@Length(max=17)
 	private String bannedName;
 	
 	@NotNull
@@ -35,8 +35,8 @@ public class KaBanBanEntry {
 	
 	private UUID banner;
 	
-	@Length(max=17)
 	@NotEmpty
+	@Length(max=17)
 	private String bannerName;
 	
 	@NotEmpty
