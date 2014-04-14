@@ -33,9 +33,9 @@ public class KaBanBanEntry {
 	@NotNull
 	private Date expireTime;
 	
-	@Length(max=17)
 	private UUID banner;
 	
+	@Length(max=17)
 	@NotEmpty
 	private String bannerName;
 	
