@@ -2,8 +2,6 @@ package guru.haun.kaban;
 
 import java.util.Calendar;
 import java.util.TimeZone;
-import java.util.concurrent.TimeUnit;
-
 import org.bukkit.ChatColor;
 
 public class KaBanMessenger {
@@ -71,7 +69,7 @@ public class KaBanMessenger {
 				( ban.getExpireTime().compareTo(tempCal.getTime()) == 0 ? ChatColor.RED + "the end of time" : ban.getExpireTime().toString() ) + 
 				ChatColor.DARK_AQUA + "\nReason: " + ChatColor.AQUA + ban.getReason();
 		if(!ban.isPerma())
-				message += ChatColor.RED + durationString(banTimeRemain(ban)) + " remaining";
+				message += "\n" + ChatColor.RED + durationString(banTimeRemain(ban)) + " remaining";
 		return message;
 	}
 	public String playerKickMessage(String kicker, String reason){
